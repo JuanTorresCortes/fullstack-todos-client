@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import ToDoCard from "../Components/ToDoCard";
 
 const HomePage = () => {
   const { toDoList, url, setShouldRefresh } = useOutletContext();
   const { data } = toDoList;
-  //Sort the data array based on the isCompleted property
-  const sortedData = [...data].sort((a, b) => {
-    if (a.isComplete && !b.isComplete) return -1;
-    if (!a.isComplete && b.isComplete) return 1;
-    return 0;
-  });
 
+  // Check if data is an array and perform the sorting operation
+  const sortedData = Array.isArray(data)
+    ? [...data].sort((a, b) => {
+        if (a.isComplete && !b.isComplete) return -1;
+        if (!a.isComplete && b.isComplete) return 1;
+        return 0;
+      })
+    : [];
   return (
     <div>
       <h1>Fullstack ToDo Application</h1>
