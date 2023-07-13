@@ -2,9 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import HomePage from "./Pages/HomePage";
+import ToDoFormPage from "./Pages/ToDoFormPage";
+import EditPage from "./Pages/EditPage";
+
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "./Pages/HomePage";
 
 const router = createBrowserRouter([
   {
@@ -17,12 +20,12 @@ const router = createBrowserRouter([
         element: <HomePage />, // Render the Blogs component when the path matches
       },
       {
-        path: "blog-form", // Path for the BlogForm component
-        element: <BlogForm />, // Render the BlogForm component when the path matches
+        path: "todo-form", // Path for the BlogForm component
+        element: <ToDoFormPage />, // Render the BlogForm component when the path matches
       },
       {
         path: "edit/:id",
-        element: <EditForm />,
+        element: <EditPage />,
       },
     ],
   },

@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+a {
+  color: white;
+  margin: 0 10px;
+}
+.todo-card {
+  border: 0.05em solid blue;
+  margin: 4px;
+}
+
+.home-card {
+  padding: 4em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
