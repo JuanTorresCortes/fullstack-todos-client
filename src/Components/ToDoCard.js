@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ToDoCard = ({ todo, url, setShouldRefresh }) => {
   const navigate = useNavigate();
+  const [showDetails, setShowDetails] = useState(false); // State for toggling details
 
   const handleSetToDoComplete = async () => {
     setShouldRefresh(true);
@@ -35,6 +36,10 @@ const ToDoCard = ({ todo, url, setShouldRefresh }) => {
     setShouldRefresh(false);
   };
 
+  const toggleDetails = () => {
+    setShowDetails(!showDetails); // Toggles the value of showDetails
+  };
+
   return (
     <div
       className="todo-card"
@@ -42,35 +47,51 @@ const ToDoCard = ({ todo, url, setShouldRefresh }) => {
         backgroundColor: todo.isComplete ? "green" : "red",
       }}
     >
-      <h2>{todo.title}</h2>
-      <button
-        onClick={handleSetToDoComplete}
-        style={{ backgroundColor: todo.isComplete ? "red" : "green" }}
-      >
-        Toggle Complete
-      </button>
-      <p>ID: {todo._id}</p>
-      <p>Description: {todo.description}</p>
-      <p>Priority: {todo.priority}</p>
-      <p>Is Complete: {todo.isComplete ? "Yes" : "No"}</p>
-      <p>Creation Date: {todo.creationDate}</p>
-      <p>Last Modified: {todo.lastModified}</p>
-      <p>Completed Date: {todo.isComplete ? todo.completedDate : "N/A"}</p>
+      <div>
+        <small>Priority: {todo.priority}</small>
 
-      <br />
-      <button
-        style={{ backgroundColor: "blue" }}
-        onClick={() => navigate(`/edit/${todo._id}`)}
-      >
-        Edit Todo
-      </button>
-      <br />
-      <button
-        onClick={handleDeleteToDo}
-        style={{ backgroundColor: "red", marginBottom: "1em" }}
-      >
-        Delete
-      </button>
+        <h2>{todo.title}</h2>
+        <button
+          onClick={handleSetToDoComplete}
+          style={{ backgroundColor: todo.isComplete ? "red" : "green" }}
+        >
+          Toggle Complete
+        </button>
+      </div>
+
+      {/* Render description and creation date */}
+      <div>
+        <p>Description: {todo.description}</p>
+        <p>Creation Date: {todo.creationDate}</p>
+        <p>Is Complete: {todo.isComplete ? "Yes" : "No"}</p>
+      </div>
+
+      {/* Render details section if showDetails is true */}
+      {showDetails && (
+        <div>
+          <p>ID: {todo._id}</p>
+          <p>Last Modified: {todo.lastModified}</p>
+          <p>Completed Date: {todo.isComplete ? todo.completedDate : "N/A"}</p>
+        </div>
+      )}
+
+      <div>
+        <br />
+        <button
+          style={{ backgroundColor: "blue" }}
+          onClick={() => navigate(`/edit/${todo._id}`)}
+        >
+          Edit Todo
+        </button>
+        <br />
+        <button onClick={handleDeleteToDo} style={{ backgroundColor: "red" }}>
+          Delete
+        </button>
+        <br />
+        <button style={{ backgroundColor: "orange" }} onClick={toggleDetails}>
+          Toggle for details
+        </button>
+      </div>
     </div>
   );
 };

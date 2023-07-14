@@ -1,3 +1,6 @@
+body {
+  background-color: black;
+}
 .App {
   text-align: center;
 }
@@ -41,15 +44,20 @@ a {
   color: white;
   margin: 0 10px;
 }
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .todo-card {
   border: 0.05em solid blue;
   margin: 4px;
-}
-
-.home-card {
-  padding: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: 7em;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }

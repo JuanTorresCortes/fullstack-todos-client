@@ -4,6 +4,7 @@ import { useParams, useOutletContext, useNavigate } from "react-router-dom";
 const EditPage = () => {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("");
+  const [description, setDescription] = useState("");
 
   const { toDoList, setShouldRefresh, url } = useOutletContext();
   const allTodo = toDoList.data;
@@ -17,6 +18,7 @@ const EditPage = () => {
       if (foundTodo) {
         setTitle(foundTodo.title);
         setPriority(foundTodo.priority);
+        setDescription(foundTodo.description);
       }
     }
   }, [id, toDoList]);
@@ -27,6 +29,7 @@ const EditPage = () => {
 
     const body = {
       title,
+      description,
       priority,
     };
 
@@ -48,9 +51,19 @@ const EditPage = () => {
         <label htmlFor="title">Title:</label>
         <br />
         <input
+          style={{ width: "37em" }}
           value={title}
           type="text"
           onChange={(e) => setTitle(e.target.value)}
+        />
+        <br />
+        <label htmlFor="description">Description: </label>
+        <br />
+        <textarea
+          value={description}
+          cols="60"
+          rows="5"
+          onChange={(e) => setDescription(e.target.value)}
         />
         <br />
         <label htmlFor="priority">Priority: </label>
