@@ -48,6 +48,8 @@ const EditPage = () => {
     <div>
       <h1>Edit Todo</h1>
       <form onSubmit={handleEdit}>
+        <br />
+        <hr style={{ width: "50%" }} />
         <label htmlFor="title">Title:</label>
         <br />
         <input
@@ -76,6 +78,12 @@ const EditPage = () => {
         <br />
         <button style={{ backgroundColor: "green" }}>Edit Todo</button>
       </form>
+      <br />
+      <button style={{ backgroundColor: "red" }} onClick={() => navigate("/")}>
+        cancel
+      </button>
+      <br />
+      <hr style={{ width: "50%" }} />
     </div>
   );
 };

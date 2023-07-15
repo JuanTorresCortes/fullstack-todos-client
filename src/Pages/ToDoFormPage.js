@@ -31,6 +31,8 @@ const ToDoFormPage = () => {
   return (
     <div>
       <h1>Create ToDo Form</h1>
+      <hr style={{ width: "50%" }} />
+
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title: </label>
         <br />
@@ -61,6 +63,11 @@ const ToDoFormPage = () => {
         <br />
         <button style={{ backgroundColor: "green" }}>Create ToDo</button>
       </form>
+      <button style={{ backgroundColor: "red" }} onClick={() => navigate("/")}>
+        cancel
+      </button>
+      <br />
+      <hr style={{ width: "50%" }} />
     </div>
   );
 };

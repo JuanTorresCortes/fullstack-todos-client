@@ -16,7 +16,6 @@ const HomePage = () => {
     : [];
   return (
     <div>
-      <h1>Fullstack ToDo Application</h1>
       {/* Check if the data is successfully fetched */}
       {toDoList.success && (
         <div className="home-card">

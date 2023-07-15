@@ -84,12 +84,12 @@ const ToDoCard = ({ todo, url, setShouldRefresh }) => {
           Edit Todo
         </button>
         <br />
-        <button onClick={handleDeleteToDo} style={{ backgroundColor: "red" }}>
-          Delete
+        <button style={{ backgroundColor: "blue" }} onClick={toggleDetails}>
+          Toggle for details
         </button>
         <br />
-        <button style={{ backgroundColor: "orange" }} onClick={toggleDetails}>
-          Toggle for details
+        <button onClick={handleDeleteToDo} style={{ backgroundColor: "red" }}>
+          Delete
         </button>
       </div>
     </div>

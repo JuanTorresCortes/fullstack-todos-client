@@ -36,7 +36,9 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Fullstack ToDo Application</h1>
       <NavBar />
+      <br />
       <Outlet
         context={{
           toDoList,
