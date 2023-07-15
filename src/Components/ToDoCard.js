@@ -26,14 +26,19 @@ const ToDoCard = ({ todo, url, setShouldRefresh }) => {
   };
 
   const handleDeleteToDo = async () => {
-    setShouldRefresh(true);
-    const response = await fetch(`${url}/todo/delete-one/${todo._id}`, {
-      method: "DELETE",
-    });
-    const deletedBlog = await response.json();
-    // navigate("/");
-    console.log(deletedBlog);
-    setShouldRefresh(false);
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete this ToDo?"
+    );
+
+    if (confirmDelete) {
+      setShouldRefresh(true);
+      const response = await fetch(`${url}/todo/delete-one/${todo._id}`, {
+        method: "DELETE",
+      });
+      const deletedBlog = await response.json();
+      console.log(deletedBlog);
+      setShouldRefresh(false);
+    }
   };
 
   const toggleDetails = () => {
