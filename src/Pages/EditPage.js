@@ -6,7 +6,7 @@ const EditPage = () => {
   const [priority, setPriority] = useState("");
   const [description, setDescription] = useState("");
 
-  const { toDoList, setShouldRefresh, url } = useOutletContext();
+  const { toDoList, setShouldRefresh, url, handleCancel } = useOutletContext();
   const allTodo = toDoList.data;
 
   const { id } = useParams();
@@ -79,7 +79,7 @@ const EditPage = () => {
         <button style={{ backgroundColor: "green" }}>Edit Todo</button>
       </form>
       <br />
-      <button style={{ backgroundColor: "red" }} onClick={() => navigate("/")}>
+      <button style={{ backgroundColor: "red" }} onClick={handleCancel}>
         cancel
       </button>
       <br />

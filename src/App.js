@@ -1,11 +1,12 @@
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import React, { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function App() {
   const [toDoList, setTodoList] = useState({});
   const [shouldRefresh, setShouldRefresh] = useState(false);
+  const navigate = useNavigate();
 
   const url = process.env.REACT_APP_URL_ENDPOINT;
 
@@ -34,6 +35,13 @@ function App() {
     console.log("data", data);
   };
 
+  const handleCancel = () => {
+    const confirmCancel = window.confirm("Are you sure you want to cancel?");
+    if (confirmCancel) {
+      navigate("/");
+    }
+  };
+
   return (
     <div className="App">
       <h1>Fullstack ToDo Application</h1>
@@ -45,6 +53,7 @@ function App() {
           setTodoList,
           setShouldRefresh,
           handleCreateToDo,
+          handleCancel,
           url,
         }}
       />

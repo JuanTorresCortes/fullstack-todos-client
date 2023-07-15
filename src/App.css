@@ -48,6 +48,7 @@ body {
 
 .todo-card {
   border: 0.05em solid blue;
+  border-radius: 4px;
   margin: 4px;
   padding-left: 1em;
   padding-right: 1em;

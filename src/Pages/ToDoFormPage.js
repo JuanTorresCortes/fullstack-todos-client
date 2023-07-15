@@ -7,7 +7,8 @@ const ToDoFormPage = () => {
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("medium");
 
-  const { handleCreateToDo, setShouldRefresh } = useOutletContext();
+  const { handleCreateToDo, setShouldRefresh, handleCancel } =
+    useOutletContext();
   const navigate = useNavigate();
 
   // Handle form submission
@@ -63,9 +64,10 @@ const ToDoFormPage = () => {
         <br />
         <button style={{ backgroundColor: "green" }}>Create ToDo</button>
       </form>
-      <button style={{ backgroundColor: "red" }} onClick={() => navigate("/")}>
-        cancel
+      <button style={{ backgroundColor: "red" }} onClick={handleCancel}>
+        Cancel
       </button>
+
       <br />
       <hr style={{ width: "50%" }} />
     </div>
